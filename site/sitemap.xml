@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://github.com/datascienceworld-kan/vinagent/</loc>
+         <loc>https://github.com/datascienceworld-kan/vinagent-docs/contributing/contributing/</loc>
+         <lastmod>2025-07-01</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/datascienceworld-kan/vinagent-docs/getting_started/</loc>
+         <lastmod>2025-07-01</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/datascienceworld-kan/vinagent-docs/getting_started/installation/</loc>
+         <lastmod>2025-07-01</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/datascienceworld-kan/vinagent-docs/getting_started/introduction/</loc>
+         <lastmod>2025-07-01</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/datascienceworld-kan/vinagent-docs/guides/tutorial/</loc>
+         <lastmod>2025-07-01</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/datascienceworld-kan/vinagent-docs/reference/api/</loc>
+         <lastmod>2025-07-01</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/datascienceworld-kan/vinagent-docs/usage/usage/</loc>
          <lastmod>2025-07-01</lastmod>
     </url>
 </urlset>

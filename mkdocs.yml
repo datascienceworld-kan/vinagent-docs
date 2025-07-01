@@ -4,16 +4,61 @@ theme:
   name: material
   palette:
       primary: indigo
-      features:
-        - content.code.copy
+  features:
+    - content.code.copy
+    - announce.dismiss
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+    - content.action.edit
+    - content.tooltips
+    - navigation.indexes
+    - navigation.expand
+    - toc.follow
+    - toc.integrate
+    - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.footer
+    - navigation.instant
+    - navigation.sections
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.prune
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
 
 nav:
-  - Home: index.md
-  - Installation: installation.md
-  - Tutorial: tutorial.md
-  - Usage: usage.md
-  - API Reference: api.md
-  - Contributing: contributing.md
+  - Get started:
+    - Introduction: get_started/index.md
+    - Quick Start:
+      - Start with basic Agent: get_started/basic_agent.md
+      - Build a custom: 
+        - 1. Add tools: get_started/add_tool.md
+        - 2. Add memory: get_started/add_memory.md
+        - 3. Async Invoking: get_started/async_invoke.md
+        - 4. Streaming: get_started/streaming.md
+        - 5. Inference: get_started/observability.md
+      - Run on local server: get_stared/local_run.md
+
+  - Guides:
+    - Vinagent API:
+      - Agent: guides/api/agent.md
+      - Agent: guides/api/agent.md
+      - Agent: guides/api/agent.md
+      - Agent: guides/api/agent.md
+    - Core Features: guides/features.md
+
+  - Usage:
+    - Usage: usage/usage.md
+  - Reference: 
+    - Agent: reference/api.md
+  - Contributing:
+    - Contributing: contributing/contributing.md
 plugins:
   - search
   - mkdocstrings:
@@ -21,9 +66,66 @@ plugins:
         python:
           options:
             show_source: true
+            docstring_style: google
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - abbr
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      use_pygments: true
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: langchain-ai
+      repo: langgraph
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - stylesheets/navigation_title_ovverides.css
+  - stylesheets/version_admonitions.css
+  - stylesheets/sticky_navigation.css
+
+copyright: >
+  Copyright &copy; 2025 DataScienceWorld.Kan, Inc | <a href="#__consent">Consent Preferences</a>
