@@ -1,0 +1,4 @@
+site_name: My Docs
+site_url: https://github.com/datascienceworld-kan/vinagent
+theme:
+  name: material
