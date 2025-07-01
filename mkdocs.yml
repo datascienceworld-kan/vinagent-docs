@@ -1,11 +1,11 @@
-site_name: My Docs
+site_name: Vinagent
 site_url: https://github.com/datascienceworld-kan/vinagent-docs
 theme:
   name: material
   palette:
-    primary: indigo
-  features:
-    - content.code.copy
+      primary: indigo
+      features:
+        - content.code.copy
 
 nav:
   - Home: index.md
