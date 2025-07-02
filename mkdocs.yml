@@ -8,23 +8,17 @@ theme:
     - content.code.copy
     - announce.dismiss
     - content.code.annotate
-    - content.code.copy
     - content.code.select
     - content.tabs.link
     - content.action.edit
     - content.tooltips
+    - toc.follow
     - navigation.indexes
     - navigation.expand
-    - toc.follow
-    - toc.integrate
     - navigation.sections
     - navigation.tabs
     - navigation.top
     - navigation.footer
-    - navigation.instant
-    - navigation.sections
-    - navigation.instant.prefetch
-    - navigation.instant.progress
     - navigation.path
     - navigation.prune
     - navigation.tracking
@@ -84,7 +78,9 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
+      toc_depth: 2
       permalink: true
+      title: "Table of Content"
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
