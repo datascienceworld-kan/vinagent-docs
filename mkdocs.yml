@@ -1,5 +1,7 @@
 site_name: Vinagent
-site_url: https://github.com/datascienceworld-kan/vinagent-docs
+site_url: https://datascienceworld-kan.github.io/vinagent-docs
+repo_url: https://github.com/datascienceworld-kan/vinagent
+edit_uri: edit/main/docs/docs/
 theme:
   name: material
   palette:
@@ -27,8 +29,8 @@ theme:
     - search.suggest
 
 nav:
-  - Get started:
-    - Introduction: get_started/index.md
+  - Get started: 
+    - index.md
     - Quick Start:
       - Start with basic Agent: get_started/basic_agent.md
       - Build a custom: 
