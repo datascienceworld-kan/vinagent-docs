@@ -1,0 +1,23 @@
+{
+    "search_api": {
+        "tool_name": "search_api",
+        "arguments": {
+            "query": {
+                "type": "Union[str, dict[str, str]]",
+                "value": "{}"
+            }
+        },
+        "return": "Any",
+        "docstring": "Search for an answer from a query string\n    Args:\n        query (dict[str, str]):  The input query to search\n    Returns:\n        The answer from search query",
+        "dependencies": [
+            "os",
+            "dotenv",
+            "tavily",
+            "dataclasses",
+            "typing"
+        ],
+        "module_path": "vinagent.tools.websearch_tools",
+        "tool_type": "module",
+        "tool_call_id": "tool_f7b49dca-0e30-4f26-977d-4ad705dbdcd8"
+    }
+}
