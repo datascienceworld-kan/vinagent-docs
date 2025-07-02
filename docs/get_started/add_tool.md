@@ -1,17 +1,24 @@
 # Add tools
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datascienceworld-kan/vinagent-docs/blob/main/docs/tutorials/get_started/add_tool.ipynb)
 
+## Prerequisites
+
 Install `vinagent` library
 
 ```python
 %pip install vinagent
 ```
 
+## Tool types
+
 `Vinagent` allows you to connect to three types of tools:
 
 - Function tool: A Python function is registered into a specific agent using a decorator.
 - Module tool: A function from a Python module, saved in a specific folder, can be registered as a tool.
 - MCP tool: Create an MCP tool, which connects to an MCP server using the MCP protocol.
+
+
+## Example of module tool
 
 You can add module tools from a Python module path as follows:
 - Initialize an LLM model, which can be any model wrapped by the [Langchain BaseLLM](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.llms.BaseLLM.html) class. I use [TogetherAI](https://api.together.ai/signin) chat model in there, thus, you need to create `.env` environment with variable
@@ -79,6 +86,8 @@ agent = Agent(
 !!! tip "Resetting Your Tools"
     If you set `is_reset_tools = True`, it will override the tool definitions every time an agent is reinitialized.
 
+
+## Asking tool
 
 ```python
 # Step 2: invoke the agent

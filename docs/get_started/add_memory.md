@@ -25,15 +25,35 @@ TOGETHER_API_KEY="Your together API key"
 TAVILY_API_KEY="Your Tavily API key"
 ```
 
-## Initialize Agent
+## Initialize Memory
 
+Vinagent is outstanding with organizing Memory as a Knowledge Graph. We leverage `AucoDB` features to enhance graph's capabilities of agent. The graph-based features is supported as follows:
+
+- Graph Construction: Builds knowledge graphs from documents using `LLMGraphTransformer` class from AucoDB, extracting entities (nodes) and relationships with enriched properties such as categories, roles, or timestamps.
+
+- Property Enrichment: Enhances nodes and relationships with contextual attributes derived from the input text, improving graph expressiveness.
+
+- Graph Visualization: Visualizes the constructed graph and exports it as a html file for easy sharing and analysis.
+
+- Neo4j Integration: Stores and manages graphs in a Neo4j database with secure client initialization.
+
+- Flexible Input: Processes unstructured text to create structured graphs, suitable for applications like knowledge management, AI research, and data analysis.
+
+Prerequisites
+
+- Neo4j Database: A running Neo4j instance (local or remote).
+- Python Packages: Install required dependencies:
+
+```
+pip install langchain-together neo4j python-dotenv
+```
 
 ```python
 from langchain_together.chat_models import ChatTogether
 from dotenv import load_dotenv, find_dotenv
 from vinagent.memory import Memory
 
-load_dotenv(find_dotenv('/Users/phamdinhkhanh/Documents/Courses/Manus/vinagent/.env'))
+load_dotenv(find_dotenv('.env'))
 
 llm = ChatTogether(
     model="meta-llama/Llama-3.3-70B-Instruct-Turbo-Free"
@@ -65,22 +85,6 @@ memory_message = memory.load_memory_by_user(load_type='string', user_id="Kan")
 print(memory_message)
 ```
 
-    2025-07-02 14:21:17,717 - INFO - HTTP Request: POST https://api.together.xyz/v1/chat/completions "HTTP/1.1 200 OK"
-    2025-07-02 14:21:17,737 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'BORN_IN', 'relation_properties': 'in 1993', 'tail': 'Thanh Hoa Province, Vietnam', 'tail_type': 'Location'}
-    2025-07-02 14:21:17,738 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'WORKS_FOR', 'relation_properties': 'since 2021', 'tail': 'FPT Software', 'tail_type': 'Company'}
-    2025-07-02 14:21:17,738 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'WORKS_FOR', 'relation_properties': 'since 2022', 'tail': 'NEU', 'tail_type': 'University'}
-    2025-07-02 14:21:17,739 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'STUDIED_AT', 'relation_properties': '', 'tail': 'High School for Gifted Students, VNU University', 'tail_type': 'School'}
-    2025-07-02 14:21:17,739 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'STUDIED_AT', 'relation_properties': 'graduated in 2015', 'tail': 'NEU University', 'tail_type': 'University'}
-    2025-07-02 14:21:17,739 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'RESEARCHED_AT', 'relation_properties': '', 'tail': 'FPT AIC', 'tail_type': 'Institution'}
-    2025-07-02 14:21:17,740 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'RECEIVED_AWARD', 'relation_properties': 'at Nvidia GTC Global Conference 2025', 'tail': 'paper award on Generative AI and LLMs', 'tail_type': 'Award'}
-    2025-07-02 14:21:17,740 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'FOUNDED', 'relation_properties': '', 'tail': 'DataScienceWorld.Kan', 'tail_type': 'Organization'}
-    2025-07-02 14:21:17,741 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'PARTICIPATED_IN', 'relation_properties': 'since 2024', 'tail': 'Google GDSC', 'tail_type': 'Event'}
-    2025-07-02 14:21:17,741 - INFO - Insert new line: {'head': 'Kan', 'head_type': 'Person', 'relation': 'PARTICIPATED_IN', 'relation_properties': 'since 2024', 'tail': 'Google I/O', 'tail_type': 'Event'}
-    2025-07-02 14:21:17,742 - INFO - Insert new line: {'head': 'DataScienceWorld.Kan', 'head_type': 'Organization', 'relation': 'OFFERS', 'relation_properties': '', 'tail': 'Build Generative AI Applications', 'tail_type': 'Course'}
-    2025-07-02 14:21:17,742 - INFO - Insert new line: {'head': 'DataScienceWorld.Kan', 'head_type': 'Organization', 'relation': 'OFFERS', 'relation_properties': '', 'tail': 'MLOps – Machine Learning in Production', 'tail_type': 'Course'}
-    2025-07-02 14:21:17,744 - INFO - Saved memory!
-
-
     Kan -> BORN_IN[in 1993] -> Thanh Hoa Province, Vietnam
     Kan -> WORKS_FOR[since 2021] -> FPT Software
     Kan -> WORKS_FOR[since 2022] -> NEU
@@ -95,6 +99,10 @@ print(memory_message)
     DataScienceWorld.Kan -> OFFERS -> MLOps – Machine Learning in Production
 
 
+
+## Load memory by user_id
+
+Memory is organized by `user_id` to segment each user’s data within the long-term memory. Before starting a conversation, the agent can access the memory associated with the given `user_id`, which helps prevent confusion between users the agent has previously interacted with and toward on a more personalized experience. For instance, if the agent has a conversation with Mr. Kan, it can recall all that information in future sessions by referencing `user_id='Kan'`.
 
 ```python
 message_user = memory.load_memory_by_user(load_type='list', user_id="Kan")
@@ -126,62 +134,10 @@ message_user
       'relation_properties': 'since 2022',
       'tail': 'NEU',
       'tail_type': 'University'},
-     {'head': 'Kan',
-      'head_type': 'Person',
-      'relation': 'STUDIED_AT',
-      'relation_properties': '',
-      'tail': 'High School for Gifted Students, VNU University',
-      'tail_type': 'School'},
-     {'head': 'Kan',
-      'head_type': 'Person',
-      'relation': 'STUDIED_AT',
-      'relation_properties': 'graduated in 2015',
-      'tail': 'NEU University',
-      'tail_type': 'University'},
-     {'head': 'Kan',
-      'head_type': 'Person',
-      'relation': 'RESEARCHED_AT',
-      'relation_properties': '',
-      'tail': 'FPT AIC',
-      'tail_type': 'Institution'},
-     {'head': 'Kan',
-      'head_type': 'Person',
-      'relation': 'RECEIVED_AWARD',
-      'relation_properties': 'at Nvidia GTC Global Conference 2025',
-      'tail': 'paper award on Generative AI and LLMs',
-      'tail_type': 'Award'},
-     {'head': 'Kan',
-      'head_type': 'Person',
-      'relation': 'FOUNDED',
-      'relation_properties': '',
-      'tail': 'DataScienceWorld.Kan',
-      'tail_type': 'Organization'},
-     {'head': 'Kan',
-      'head_type': 'Person',
-      'relation': 'PARTICIPATED_IN',
-      'relation_properties': 'since 2024',
-      'tail': 'Google GDSC',
-      'tail_type': 'Event'},
-     {'head': 'Kan',
-      'head_type': 'Person',
-      'relation': 'PARTICIPATED_IN',
-      'relation_properties': 'since 2024',
-      'tail': 'Google I/O',
-      'tail_type': 'Event'},
-     {'head': 'DataScienceWorld.Kan',
-      'head_type': 'Organization',
-      'relation': 'OFFERS',
-      'relation_properties': '',
-      'tail': 'Build Generative AI Applications',
-      'tail_type': 'Course'},
-     {'head': 'DataScienceWorld.Kan',
-      'head_type': 'Organization',
-      'relation': 'OFFERS',
-      'relation_properties': '',
-      'tail': 'MLOps – Machine Learning in Production',
-      'tail_type': 'Course'}]
+      ...
+    ]
 
-
+Therefore, Agent can utilize this personalized graph-based memory to provide more accurate and relevant responses, which align with user's preferences.
 
 ## Visualize on Neo4j
 

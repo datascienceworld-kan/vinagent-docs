@@ -38,7 +38,7 @@ nav:
         - 2. Add memory: get_started/add_memory.md
         - 3. Async Invoking: get_started/async_invoke.md
         - 4. Streaming: get_started/streaming.md
-        - 5. Inference: get_started/observability.md
+        - 5. Observability: get_started/observability.md
       - Run on local server: get_stared/local_run.md
 
   - Guides:

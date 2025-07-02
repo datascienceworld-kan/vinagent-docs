@@ -2,13 +2,16 @@
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datascienceworld-kan/vinagent-docs/blob/main/docs/tutorials/get_started/streaming.ipynb)
 
+## Install libraries
 
 ```python
 %pip install vinagent
 ```
 
-In addition to synchronous and asynchronous invocation, `Vinagent` also supports streaming invocation. This means that the response is generated in real-time on token-by-token basis, allowing for a more interactive and responsive experience. To use streaming, simply use `agent.stream`:
+## Streaming
+In addition to synchronous and asynchronous invocation, `Vinagent` also supports streaming invocation. This means that the response is generated in real-time on token-by-token basis, allowing for a more interactive and responsive experience. To use streaming, simply use `agent.stream`.
 
+Setup environment variables:
 
 ```python
 %%writefile .env
@@ -16,6 +19,7 @@ TOGETHER_API_KEY="Your together API key"
 TAVILY_API_KEY="Your Tavily API key"
 ```
 
+Initialize LLM and Agent:
 
 ```python
 from vinagent.agent.agent import Agent
@@ -44,7 +48,13 @@ agent = Agent(
 )
 ```
 
-Streaming provides a significant advantage in Agent invocation by delivering output token-by-token in runtime, allowing users to read a long-running answer as it exposures without waiting for the entire response to complete. This greatly enhances the user experience, especially when integrating the agent into websites or mobile apps, where responsiveness and interactivity are critical. Streaming is particularly effective for long outputs and I/O-bound tasks, enabling dynamic UI updates, early interruption, and a more natural, real-time interaction flow. You can conveniently use streaming in Vinagent by iterating over the generator returned by the `agent.stream()` method.
+Streaming provides a significant advantage in Agent invocation by delivering output token-by-token in runtime, allowing users to read a long-running answer as it exposures without waiting for the entire response to complete. 
+
+- It greatly enhances the user experience, especially when integrating the agent into websites or mobile apps, where responsiveness and interactivity are critical. 
+
+- Streaming is particularly effective for long outputs and I/O-bound tasks, enabling dynamic UI updates, early interruption, and a more natural, real-time interaction flow. 
+
+You can conveniently use streaming in Vinagent by iterating over the generator returned by the `agent.stream()` method.
 
 
 ```python
