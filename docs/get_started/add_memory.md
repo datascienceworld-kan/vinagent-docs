@@ -1,7 +1,11 @@
 # Agent memory
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/datascienceworld-kan/vinagent-docs/blob/main/docs/tutorials/get_started/add_memory.ipynb)
 
-`Vinagent` offers a `Graphical Memory` which organize document content into a knowledge graph including nodes, relationship and edges. Graph memory can be organized as a long-term and short-term memory to ensure that Agent can remember every information it has studied.
+`Vinagent` features a `Graphical Memory` system that transforms messages into a structured knowledge graph composed of nodes, relationships, and edges. This memory can be organized into short-term and long-term components, allowing the Agent to retain and recall learned information effectively.
+
+Compared to traditional `Conversational Memory, Graphical Memory` offers distinct advantages: it condenses essential information into a graph format, reducing hallucinations by filtering out redundant or irrelevant details. Additionally, because it operates with a shorter context length, it significantly lowers computational costs.
+
+This graph-based approach mirrors how humans conceptualize and retain knowledge, making it especially powerful for capturing the core meaning of complex conversations.
 
 ## Setup
 
