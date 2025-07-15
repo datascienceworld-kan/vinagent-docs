@@ -39,7 +39,10 @@ nav:
         - 3. Async Invoking: get_started/async_invoke.md
         - 4. Streaming: get_started/streaming.md
         - 5. Observability: get_started/observability.md
-      - Run on local ReactJS UI: get_started/local_run.md
+      - Run local ReactJS App: get_started/local_run.md
+    - Agent Development:
+      - Workflow & Agent: get_started/workflow_and_agent.md
+
 
   - Guides:
     - Vinagent API:
