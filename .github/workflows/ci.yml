@@ -32,5 +32,6 @@ jobs:
       - name: Install from source
         run: pip install ./vinagent
       - run: pip install mkdocs-material mkdocstrings[python]
+      - run: python -c "import sys; print(sys.path)"
       - run: python -c "from vinagent.graph.operator import FlowStateGraph; print(FlowStateGraph)"
       - run: mkdocs gh-deploy --force

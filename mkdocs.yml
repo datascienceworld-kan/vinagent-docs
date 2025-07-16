@@ -1,5 +1,5 @@
 site_name: Vinagent
-site_url: https://datascienceworld-kan.github.io/vinagent-docs
+site_url: https://datascienceworld-kan.github.io/vinagent
 repo_url: https://github.com/datascienceworld-kan/vinagent
 edit_uri: edit/main/docs/docs/
 theme:
@@ -60,7 +60,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [..]
+          paths: [".."]
           load_external_modules: true
           import:
             - https://docs.python.org/3/objects.inv
