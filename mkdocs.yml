@@ -61,8 +61,6 @@ plugins:
       handlers:
         python:
           paths: [..]
-          rendering:
-            signature_formatter: black
           import:
             - https://docs.python.org/3/objects.inv
           options:
