@@ -1,6 +1,0 @@
-artifact_location: mlflow-artifacts:/679550795856097623
-creation_time: 1751455229151
-experiment_id: '679550795856097623'
-last_update_time: 1751455229151
-lifecycle_stage: active
-name: call-local-llm
