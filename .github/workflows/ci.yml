@@ -25,5 +25,6 @@ jobs:
           path: .cache 
           restore-keys: |
             mkdocs-material-
+      - run: pip install git+https://github.com/datascienceworld-kan/vinagent.git
       - run: pip install mkdocs-material mkdocstrings[python]
       - run: mkdocs gh-deploy --force
