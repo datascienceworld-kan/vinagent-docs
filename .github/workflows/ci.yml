@@ -25,7 +25,12 @@ jobs:
           path: .cache 
           restore-keys: |
             mkdocs-material-
-      - run: pip install git+https://github.com/datascienceworld-kan/vinagent.git
+      
+      - name: Clone vinagent
+        run: git clone https://github.com/datascienceworld-kan/vinagent.git
+      
+      - name: Install from source
+        run: pip install ./vinagent
       - run: pip install mkdocs-material mkdocstrings[python]
       - run: python -c "from vinagent.graph.operator import FlowStateGraph; print(FlowStateGraph)"
       - run: mkdocs gh-deploy --force
