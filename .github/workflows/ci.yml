@@ -27,4 +27,5 @@ jobs:
             mkdocs-material-
       - run: pip install git+https://github.com/datascienceworld-kan/vinagent.git
       - run: pip install mkdocs-material mkdocstrings[python]
+      - run: python -c "from vinagent.graph.operator import FlowStateGraph; print(FlowStateGraph)"
       - run: mkdocs gh-deploy --force
