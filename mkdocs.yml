@@ -42,30 +42,55 @@ nav:
       - Run local ReactJS App: get_started/local_run.md
     - Agent Development:
       - Workflow & Agent: get_started/workflow_and_agent.md
-
-
-  - Guides:
-    - Vinagent API:
-      - Agent: guides/api/agent.md
-      - Agent: guides/api/agent.md
-      - Agent: guides/api/agent.md
-      - Agent: guides/api/agent.md
-    - Core Features: guides/features.md
-
-  - Usage:
-    - Usage: usage/usage.md
+  - Guidelines: 
+    - Financial Usercase:
+      - Visualize and Analyze Stock: guides/analyze_stock_trending.md
+      - Find Trending New: guides/trending_news.md
   - Reference: 
-    - Agent: reference/api.md
+    - Agent: reference/agent.md
+    - Tool: reference/tool.md
+    - Memory: reference/memory.md
+    - Graph: reference/graph.md
+    - MCP: reference/mcp.md
+    - Tracing: reference/tracing.md
   - Contributing:
-    - Contributing: contributing/contributing.md
+    - How to Contribute: contributing/contributing.md
 plugins:
   - search
   - mkdocstrings:
       handlers:
         python:
+          paths: [..]
+          rendering:
+            signature_formatter: black
+          import:
+            - https://docs.python.org/3/objects.inv
           options:
-            show_source: true
-            docstring_style: google
+            preload_modules:
+              - vinagent
+              - langchain_core
+            enable_inventory: true
+            members_order: source
+            allow_inspection: true
+            heading_level: 2
+            show_bases: true
+            show_source: false 
+            summary: true
+            inherited_members: true
+            selection:
+              docstring_style: google
+            docstring_section_style: table
+            show_root_toc_entry: false
+            show_signature: true
+            show_signature_annotations: true
+            separate_signature: true
+            line_length: 60
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            signature_crossrefs: true
+            options:
+              filters:
+                - "!^_"
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -83,7 +108,6 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
-      toc_depth: 2
       permalink: true
       title: "Table of Content"
   - pymdownx.arithmatex:
